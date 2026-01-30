@@ -40,3 +40,12 @@ a {
     color-scheme: dark;
   }
 }
+
+/* devtools-indicator 숨기기 */
+#devtools-indicator,
+[data-devtools-indicator],
+.devtools-indicator {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}

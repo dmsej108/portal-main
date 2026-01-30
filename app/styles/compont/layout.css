@@ -1,0 +1,37 @@
+body{}
+/* background:#565871; */
+.wrapper{background:#f4f4ef;height: 100vh;}
+header{width: 50px;height:calc(100vh - 35px);  display: flex; flex-direction: column; position: fixed; justify-content: space-between; top:15px; left:10px;
+     border-radius: 10px; padding:10px 0 20px 0}
+.container{flex:1;height: calc(100vh - 97px); overflow: hidden; margin:0px 20px 20px 10px; background:#fff;  padding:30px; margin-left:70px}
+.contents{overflow-y: auto;}
+.header_top{width:100%; display:flex; justify-content: space-between; padding:25px 40px 15px 80px; align-items: center;}
+.header_top .loginArea .account_name{font-size:12px; color:var(--primary-txt-color); text-align:left; position: relative; padding-left:20px;}
+.header_top .loginArea .account_name:after{content: ''; width:16px; height:16px; display:block; margin:0 auto;  opacity: .8; 
+    background:url('/image/common/camera-account.svg') no-repeat center center; background-size:100% 100%;position: absolute; left:0; top:2px }
+.header_top .loginArea .login_link{font-size:12px; color:var(--primary-txt-color); text-align:left; position: relative; padding-left:20px;margin-left:10px;}
+.header_top .loginArea .login_link:after{content: ''; width:16px; height:16px; display:block; margin:0 auto;  opacity: .8; 
+    background:url('/image/common/account-reactivate.svg') no-repeat center center; background-size:100% 100%;position: absolute; left:0; top:2px }
+.header_top svg{width:100%}
+.toggleHeader{background:url('/image/common/list-box.svg') no-repeat center center; background-size:100% 100%; width:26px; height:26px; display:block; margin:0 auto; 
+    width:30px; height:30px; opacity: 1; margin-bottom:40px; }
+.header_inner > ul > li{margin-bottom:30px;}
+.header_inner > ul > li span:after{content:''; width:26px; height:26px; display:block; margin:0 auto;  opacity:1;}
+.header_inner > ul > li.EVENT span:after{background:url('/image/menu/view-dashboard.svg') no-repeat center center; background-size:100% 100%; color:#fff }
+.header_inner > ul > li.SYSTEM span:after{background:url('/image/menu/hand-coin.svg') no-repeat center center; background-size:100% 100%; }
+.header_inner > ul > li.CONFIG_MANAGEMENT span:after{background:url('/image/menu/clipboard-check-multiple.svg') no-repeat center center; background-size:100% 100%; }
+.header_inner > ul > li.INFRA_MANAGEMENT span:after{background:url('/image/menu/cloud-cog.svg') no-repeat center center; background-size:100% 100%; }
+.header_inner > ul > li.DATA_CENTER_MANAGEMENT span:after{background:url('/image/menu/database-search.svg') no-repeat center center; background-size:100% 100%; }
+.header_inner > ul > li.ACCOUNT_MANAGEMENT span:after{background:url('/image/menu/account-details.svg') no-repeat center center; background-size:100% 100%; }
+.header_bottom{font-size:10px; color:var(--primary-txt-color); text-align:left; display:none }
+.navigations_wrap{display: flex;justify-content: space-between; align-items: center; padding-bottom:10px;margin-bottom:20px; border-bottom:1px solid #e0e0e0;}
+.navigations_wrap .pageTitle{font-size:20px; font-weight:bold; color:var(--primary-txt-color); text-align:left; position: relative; padding-left:30px; }
+.navigations_wrap .pageTitle:after{content:''; width:26px; height:26px; display:block; margin:0 auto;  
+    opacity: .8; background:url('/image/common/file-document-edit-outline.svg') no-repeat center center; background-size:100% 100%;position: absolute; left:0; top:2px }
+.navigations_wrap .navigations_inner{font-size:12px; color:var(--primary-txt-color); text-align:left; display: flex; align-items: center;}
+.navigations_wrap .navigations_inner span{display: inline-block; margin-right: 5px; padding-right:10px; position: relative;}
+.navigations_wrap .navigations_inner span:after{content:'>'; position: absolute; right: 0; top: 0;}
+.navigations_wrap .navigations_inner span:last-child:after{content:none;}
+.navigations_wrap .navigations_inner span:last-child{padding-right:0; margin-right:0}
+.navigations_wrap .navigations_inner .home:before{content: ''; display:inline-block;background:url('/image/menu/home-circle.svg') no-repeat left center; background-size:100% 100%; width:16px; height:16px;
+     position: relative; top: 2px;}
