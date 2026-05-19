@@ -30,4 +30,14 @@ export const menuMetadata: Record<string, { title: string; description: string; 
     description: "계정 관리 페이지입니다.",
     keywords: ["계정", "관리", "account"],
   },
+  "/sub": {
+    title: "서브 관리",
+    description: "서브 관리 페이지입니다.",
+    keywords: ["서브", "관리"],
+  },
+  "/marketing/event": {
+    title: "이벤트 관리",
+    description: "이벤트 관리 페이지입니다.",
+    keywords: ["이벤트", "관리", "marketing"],
+  },
 };

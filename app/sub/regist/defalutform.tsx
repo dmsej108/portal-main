@@ -1,4 +1,4 @@
-import FileUpload from '../../components/FileUpload';
+import FileUpload from '@/components/ui/FileUpload';
 export default function DefaultForm({ register, errors, watch, setFileList }: { register: any, errors: any, watch: any, setFileList: React.Dispatch<React.SetStateAction<File[]>> }) {
     // Row Data: The data to be displayed.
     const eventType=[

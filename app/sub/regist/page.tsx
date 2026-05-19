@@ -3,8 +3,8 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { rules } from '../../_setting/validate'; 
-import FormTitle from '../../components/FormTitle';
+import { rules } from '@/lib/validate';
+import FormTitle from '@/components/ui/FormTitle';
 import DefaultForm from './defalutform';
 import FunctionForm from './functionform';
 import BenefitForm from './benefitform';

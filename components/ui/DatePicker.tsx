@@ -1,5 +1,5 @@
 
-import { DatePicker } from '../config/react-datepicker';
+import { DatePicker } from '@/lib/config/react-datepicker';
 import { useState } from 'react';
 
 interface DatePickerComponentProps {
@@ -40,9 +40,9 @@ export default function DatePickerComponent({ onDateChange }: DatePickerComponen
                             <option key={index} value={item.value}>{item.label}</option>
                         ))}
                     </select>
-                    <DatePicker selectsEnd selected={endDate} onChange={handleChangeEndDate} /> 
-                    <DatePicker selectsStart selected={startDate} onChange={handleChange} /> 
-                    
+                    <DatePicker selectsEnd selected={endDate} onChange={handleChangeEndDate} />
+                    <DatePicker selectsStart selected={startDate} onChange={handleChange} />
+
                 </div>
             </div>
         </div>

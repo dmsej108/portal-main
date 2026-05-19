@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from 'react';
-import { AgGridReact } from '../config/ag-grid';
-import Searchbox from '../components/Searchbox';
-import Pagination from '../components/Pagination';
-import DatePickerComponent from '../components/DatePicker';
+import dynamic from 'next/dynamic';
+import type { ColDef } from 'ag-grid-community';
+import Searchbox from '@/components/ui/Searchbox';
+import Pagination from '@/components/ui/Pagination';
 import { useRouter } from 'next/navigation';
+
+const AgGridReact = dynamic(
+  () => import('@/lib/config/ag-grid').then((m) => ({ default: m.AgGridReact })),
+  { ssr: false }
+);
+const DatePickerComponent = dynamic(() => import('@/components/ui/DatePicker'), { ssr: false });
 
 export default function Sub() {
   const router = useRouter();
@@ -35,12 +41,11 @@ export default function Sub() {
     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
   ]);
 
-  // Column Definitions: Defines the columns to be displayed.
-  const [colDefs] = useState([
-    { field: "make" as const },
-    { field: "model" as const },
-    { field: "price" as const },
-    { field: "electric" as const }
+  const [colDefs] = useState<ColDef[]>([
+    { field: "make" },
+    { field: "model" },
+    { field: "price" },
+    { field: "electric" },
   ]);
   const listCount=[
     { label: '10개씩 보기', value: '10' },
@@ -81,7 +86,7 @@ export default function Sub() {
           columnDefs={colDefs}
           domLayout="autoHeight" 
         />
-        <Pagination />
+        <Pagination itemCount={0} cntPerPage={10} currentPage={1} onChangedPage={() => {}} />
       </div>
     </div>
   );

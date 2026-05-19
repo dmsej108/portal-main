@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { menuMetadata } from "../config/metadata";
+import { menuMetadata } from "@/lib/config/metadata";
 
 // 동적 메타데이터 생성 (Next.js 표준 방법)
 export async function generateMetadata(): Promise<Metadata> {

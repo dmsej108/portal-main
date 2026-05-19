@@ -222,16 +222,23 @@ textarea {
    scroll custom
    *****************************************************************/
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d2d2d2;
+  background: #cbd5e1;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #ebebeb;
-  border-radius: 10px;
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
 }

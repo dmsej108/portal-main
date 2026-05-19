@@ -1,21 +1,30 @@
 :root {
-  --base-txt-color: #444;
-  --strong-txt-color: #222;
-  --primary-txt-color: #32394f;
-  --button-bg-color: #6d6a97;
-  --point-txt-color1: #9284d0;
-  --point-txt-color2: #008378;
-  --error-txt-color: #e07567;
-  --bg-color:#e3e2e6;
-  --placeholder-txt-color: #999;
-  --base-bg-color: #f7f7f7;
-  --base-bd-color: #d2d2d2;
-  --bd1-color: #d2d2d2;
-  --bd2-color: #ebebeb;
-  --form-control-color: #6d6a97;
+  /* brand */
+  --admin-dark: #574e45;
+  --admin-dark-hover: #635a50;
+  --admin-accent: #FFB700;
+  --admin-accent-hover: #E8A100;
+  --admin-accent-subtle: rgba(255,183,0,0.15);
+
+  /* text */
+  --base-txt-color: #374151;
+  --strong-txt-color: #111827;
+  --primary-txt-color: #1e293b;
+  --placeholder-txt-color: #9ca3af;
+
+  /* ui */
+  --button-bg-color: #3b82f6;
+  --point-txt-color1: #3b82f6;
+  --point-txt-color2: #10b981;
+  --error-txt-color: #ef4444;
+  --bg-color: #f1f5f9;
+  --base-bg-color: #f8fafc;
+  --base-bd-color: #e2e8f0;
+  --bd1-color: #e2e8f0;
+  --bd2-color: #f1f5f9;
+  --form-control-color: #3b82f6;
   --white-color: #fff;
-  /* #6d6a97 */
-  --table-header-bg-color: #f0f0f4;
+  --table-header-bg-color: #f8fafc;
 }
 
 html {
