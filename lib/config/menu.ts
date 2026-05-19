@@ -284,7 +284,7 @@ export const mainMenu: MainMenuItem[] = [
         key: "marketing-event",
         basePath: "/marketing/event",
         children: [
-          { label: "이벤트등록/수정", href: "/marketing/event/regist", menuCode: "EV_CREATE" },
+          { label: "이벤트등록", href: "/marketing/event/regist", menuCode: "EV_CREATE" },
           { label: "이벤트목록조회", href: "/marketing/event", menuCode: "EV_LIST" },
           { label: "당첨자관리", href: "/marketing/event/winner", menuCode: "EV_WINNER" },
           { label: "쿠폰관리", href: "/marketing/event/coupon", menuCode: "EV_COUPON" },
@@ -297,7 +297,7 @@ export const mainMenu: MainMenuItem[] = [
         key: "marketing-product-info",
         basePath: "/marketing/product-info",
         children: [
-          { label: "상품등록/수정", href: "/marketing/product-info/create", menuCode: "PI_CREATE" },
+          { label: "상품등록", href: "/marketing/product-info/create", menuCode: "PI_CREATE" },
           { label: "상품목록조회", href: "/marketing/product-info/list", menuCode: "PI_LIST" },
           { label: "상품분류관리", href: "/marketing/product-info/category", menuCode: "PI_CATEGORY" },
           { label: "상품비교관리", href: "/marketing/product-info/compare", menuCode: "PI_COMPARE" },
@@ -310,7 +310,7 @@ export const mainMenu: MainMenuItem[] = [
         key: "marketing-product-post",
         basePath: "/marketing/product-post",
         children: [
-          { label: "게시등록/수정", href: "/marketing/product-post/create", menuCode: "PP_CREATE" },
+          { label: "게시등록", href: "/marketing/product-post/create", menuCode: "PP_CREATE" },
           { label: "게시목록조회", href: "/marketing/product-post/list", menuCode: "PP_LIST" },
           { label: "노출설정관리", href: "/marketing/product-post/exposure", menuCode: "PP_EXPOSURE" },
           { label: "타겟설정관리", href: "/marketing/product-post/target", menuCode: "PP_TARGET" },
@@ -362,7 +362,7 @@ export const mainMenu: MainMenuItem[] = [
         key: "marketing-nudge-banner",
         basePath: "/marketing/nudge-banner",
         children: [
-          { label: "배너등록/수정", href: "/marketing/nudge-banner/create", menuCode: "NB_CREATE" },
+          { label: "배너등록", href: "/marketing/nudge-banner/create", menuCode: "NB_CREATE" },
           { label: "배너목록조회", href: "/marketing/nudge-banner/list", menuCode: "NB_LIST" },
           { label: "노출설정관리", href: "/marketing/nudge-banner/exposure", menuCode: "NB_EXPOSURE" },
           { label: "타겟설정관리", href: "/marketing/nudge-banner/target", menuCode: "NB_TARGET" },
@@ -637,7 +637,7 @@ export const mainMenu: MainMenuItem[] = [
         key: "operation-admin",
         basePath: "/operation/admin",
         children: [
-          { label: "관리자등록/수정", href: "/operation/admin/create", menuCode: "AD_CREATE" },
+          { label: "관리자등록", href: "/operation/admin/create", menuCode: "AD_CREATE" },
           { label: "관리자목록조회", href: "/operation/admin/list", menuCode: "AD_LIST" },
           { label: "관리자그룹관리", href: "/operation/admin/group", menuCode: "AD_GROUP" },
           { label: "관리자승인관리", href: "/operation/admin/approve", menuCode: "AD_APPROVE" },

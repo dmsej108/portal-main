@@ -8,7 +8,7 @@
   - Next.js 앱 루트입니다.
   - 페이지, 레이아웃, 라우트별 컴포넌트를 포함합니다.
   - 현재 다음과 같은 하위 경로가 있습니다:
-    - `app/event/`
+    - `app/marketing/`
     - `app/sub/`
     - `app/system/`
 
@@ -53,7 +53,7 @@
 ### `app/`
 Next.js의 앱 디렉터리 구조를 따릅니다. 각 폴더는 URL 라우트에 대응하며, `page.tsx` 파일은 해당 경로의 페이지를 렌더링합니다.
 
-- `app/event/` : 이벤트 관련 페이지
+- `app/marketing/` : 마케팅 관련 페이지 (이벤트 등)
 - `app/sub/` : 서브 관련 페이지
 - `app/system/` : 시스템 관리 페이지
 

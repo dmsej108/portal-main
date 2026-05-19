@@ -2,16 +2,29 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { ColDef } from 'ag-grid-community';
+import type { ColDef, ICellRendererParams } from 'ag-grid-community';
 import Searchbox from '@/components/ui/Searchbox';
 import Pagination from '@/components/ui/Pagination';
 import { useRouter } from 'next/navigation';
+import { SButton, SIcon, SSelect, SPagination } from '@zzou/design-system';
 
 const AgGridReact = dynamic(
   () => import('@/lib/config/ag-grid').then((m) => ({ default: m.AgGridReact })),
   { ssr: false }
 );
 const DatePickerComponent = dynamic(() => import('@/components/ui/DatePicker'), { ssr: false });
+
+function ElectricButtonCell({ data }: ICellRendererParams) {
+  return (
+    <SButton
+      variant="outline"
+      size="small"
+      onClick={() => console.log('row:', data)}
+    >
+      button
+    </SButton>
+  );
+}
 
 export default function Event() {
   const router = useRouter();
@@ -26,16 +39,16 @@ export default function Event() {
   };
 
   const [rowData] = useState([
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+    { make: "Tesla", model: "Model Y", price: 64950 },
+    { make: "Ford", model: "F-Series", price: 33850 },
+    { make: "Toyota", model: "Corolla", price: 29600 },
   ]);
 
   const [colDefs] = useState<ColDef[]>([
     { field: "make" },
     { field: "model" },
     { field: "price" },
-    { field: "electric" },
+    { field: "electric", cellRenderer: ElectricButtonCell },
   ]);
 
   const listCount = [
@@ -67,16 +80,16 @@ export default function Event() {
       </Searchbox>
       <div className="table-util flex space-between">
         <div className="btn-set-m flex align-end">
-          <button type="button" className="btn btn-ss" onClick={() => router.push('/marketing/event/regist')}>등록</button>
+          <SButton variant="outline" size="small" onClick={() => router.push('/marketing/event/regist')}>
+            등록
+          </SButton>
         </div>
         <div className="btn-set-m flex align-end">
           <span className="table-total">조회결과 총 <strong>5</strong>건</span>
-          <button type="button" className="btn btn-opt"><span className="ico-download"></span>파일다운로드</button>
-          <select className="custom-select sm">
-            {listCount.map((item, index) => (
-              <option key={index} value={item.value}>{item.label}</option>
-            ))}
-          </select>
+          <SButton variant="outline" size="small" leftIcon={<SIcon name="download" size="small" aria-hidden />}>
+            파일다운로드
+          </SButton>
+          <SSelect options={listCount} size="small" style={{ width: 100 }} />
         </div>
       </div>
       <div className="ag-theme">
@@ -85,7 +98,10 @@ export default function Event() {
           columnDefs={colDefs}
           domLayout="autoHeight"
         />
-        <Pagination itemCount={itemCount} cntPerPage={cntPerPage} currentPage={currentPage} onChangedPage={onChangedPage} />
+        {/* <Pagination itemCount={itemCount} cntPerPage={cntPerPage} currentPage={currentPage} onChangedPage={onChangedPage} /> */}
+        <div className="pagination">
+          <SPagination itemCount={itemCount} cntPerPage={cntPerPage} currentPage={currentPage} onChangedPage={onChangedPage} />
+        </div>
       </div>
     </div>
   );

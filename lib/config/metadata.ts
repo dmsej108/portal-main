@@ -1,10 +1,5 @@
 // 공통 메타데이터 설정
 export const menuMetadata: Record<string, { title: string; description: string; keywords: string[] }> = {
-  "/event": {
-    title: "이벤트 관리",
-    description: "이벤트 관리 페이지입니다.",
-    keywords: ["이벤트", "관리", "event"],
-  },
   "/system": {
     title: "시스템구현보고서",
     description: "시스템구현보고서 관리 페이지입니다.",
