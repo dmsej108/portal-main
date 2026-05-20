@@ -9,8 +9,10 @@ import DefaultForm from './DefaultForm';
 import FunctionForm from './functionform';
 import BenefitForm from './benefitform';
 import { SButton } from '@zzou/design-system';
+import { useRouter } from 'next/navigation';
 
 export default function EventRegist() {
+    const router = useRouter();
     const schema = yup.object().shape({
         eventName: rules.create('이벤트 제목').required(),
         eventType: rules.create('이벤트 유형').required(),
