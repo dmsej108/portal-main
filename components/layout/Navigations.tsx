@@ -22,7 +22,6 @@ export default function Navigations({ activeMenu }: BreadcrumbProps) {
           </svg>
         </span>
         {activeMenu && <span>{activeMenu.label}</span>}
-        <span>목록</span>
       </div>
     </div>
   );

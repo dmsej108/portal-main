@@ -185,7 +185,7 @@
   }
   
   .table.reg tbody th {
-    padding: 10px 10px 10px 20px;
+    padding: 10px 20px;
     background-color: var(--table-header-bg-color);
     vertical-align: top;
     font-size: 12px;
@@ -275,8 +275,8 @@
   }
   
   .table.reg td .input-guide {
-    margin-top: 12px;
-    margin-bottom: -6px;
+    margin-top: 6px;
+    margin-bottom: -3px;
   }
   
   .table.reg td .input-timer {

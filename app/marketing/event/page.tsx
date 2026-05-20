@@ -79,17 +79,17 @@ export default function Event() {
         </div>
       </Searchbox>
       <div className="table-util flex space-between">
-        <div className="btn-set-m flex align-end">
-          <SButton variant="outline" size="small" onClick={() => router.push('/marketing/event/regist')}>
-            등록
-          </SButton>
+        <div className="flex align-end">
+          <span className="table-total">조회결과 총 <strong>{rowData.length}</strong>건</span>
         </div>
         <div className="btn-set-m flex align-end">
-          <span className="table-total">조회결과 총 <strong>5</strong>건</span>
-          <SButton variant="outline" size="small" leftIcon={<SIcon name="download" size="small" aria-hidden />}>
+          {/* <SButton variant="outline" size="small" leftIcon={<SIcon name="download" size="small" aria-hidden />}>
             파일다운로드
-          </SButton>
+          </SButton> */}
           <SSelect options={listCount} size="small" style={{ width: 100 }} />
+          <SButton variant="primary" size="small" onClick={() => router.push('/marketing/event/regist')}>
+            이벤트 등록
+          </SButton>
         </div>
       </div>
       <div className="ag-theme">

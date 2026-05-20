@@ -5,9 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { rules } from '@/lib/validate';
 import FormTitle from '@/components/ui/FormTitle';
-import DefaultForm from './defalutform';
+import DefaultForm from './DefaultForm';
 import FunctionForm from './functionform';
 import BenefitForm from './benefitform';
+import { SButton } from '@zzou/design-system';
 
 export default function EventRegist() {
     const schema = yup.object().shape({
@@ -33,10 +34,10 @@ export default function EventRegist() {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         resolver: yupResolver(schema) as any,
         defaultValues: {
-            eventType: '1',
-            eventStatus: '1',
-            eventTarget: '1',
-            benefitType: '1',
+            eventType: 'general',
+            eventStatus: 'published',
+            eventTarget: 'all',
+            benefitType: 'immediate',
             useType: '1',
             marketingPushAgreement: true,
             agreementList: [],
@@ -58,7 +59,7 @@ export default function EventRegist() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="tbl-wrap">
                 <FormTitle title="기본 정보" />
-                <DefaultForm register={register} errors={errors} watch={watch} setFileList={setFileList} />
+                <DefaultForm register={register} errors={errors} watch={watch} setValue={setValue} setFileList={setFileList} />
 
                 <FormTitle title="기능 설정" style={{ marginTop: '20px' }} />
                 <FunctionForm register={register} errors={errors} />
@@ -67,8 +68,8 @@ export default function EventRegist() {
                 <BenefitForm register={register} errors={errors} />
             </div>
             <div className="btn-bottom-set flex justify-center">
-                <button type="button" className="btn btn-sl nega">취소</button>
-                <button type="submit" className="btn btn-sl posi">저장</button>
+                <SButton variant="outline" size="large" className="mr-10" onClick={() => router.back()}>취소</SButton>
+                <SButton variant="primary" size="large" type="submit">저장</SButton>
             </div>
         </form>
     );

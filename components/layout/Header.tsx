@@ -2,6 +2,7 @@
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { mainMenu } from "@/lib/config/menu";
+import { BASE_PATH } from "@/lib/config/site";
 
 export default function Header() {
   const router = useRouter();
@@ -11,8 +12,8 @@ export default function Header() {
 
   return (
     <div className="header_top">
-      <div className="logo" onClick={() => router.push("/")} style={{ cursor: "pointer" }}>
-        <Image src="/potal-admin/image/common/KB_s_kr3.jpg" alt="logo" width={120} height={40} style={{ height: "40px", width: "auto" }} />
+      <div className="logo" onClick={() => router.push("/marketing/event")} style={{ cursor: "pointer" }}>
+        <Image src={`${BASE_PATH}/image/common/KB_s_kr3.jpg`} alt="logo" width={120} height={40} style={{ height: "40px", width: "auto" }} />
       </div>
       <div className="utils">
         <nav className="menu">
