@@ -332,6 +332,7 @@
     --ag-card-shadow: none;
     --ag-popup-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   }
+
   .ag-root-wrapper{border-radius: 0;}
  .ag-sticky-top, .ag-dnd-ghost {
     background-color: var(--ag-background-color);
@@ -7262,4 +7263,54 @@
   input[class^=ag-][type=range]:disabled {
     opacity: 0.5;
   }
-  
+
+/* 컬럼 리사이즈: 세로 막대 대신 grip(점 2열×3행) */
+.ag-theme .ag-header-cell-resize,
+[class*=ag-theme-] .ag-header-cell-resize {
+  width: 14px;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ag-theme .ag-header-cell-resize::after,
+[class*=ag-theme-] .ag-header-cell-resize::after {
+  content: "";
+  display: block !important;
+  width: 8px !important;
+  height: 13px !important;
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='13' viewBox='0 0 8 13'%3E%3Ccircle cx='1.5' cy='2' r='0.75' fill='%23b8b8b8'/%3E%3Ccircle cx='5.5' cy='2' r='0.75' fill='%23b8b8b8'/%3E%3Ccircle cx='1.5' cy='6.5' r='0.75' fill='%23b8b8b8'/%3E%3Ccircle cx='5.5' cy='6.5' r='0.75' fill='%23b8b8b8'/%3E%3Ccircle cx='1.5' cy='11' r='0.75' fill='%23b8b8b8'/%3E%3Ccircle cx='5.5' cy='11' r='0.75' fill='%23b8b8b8'/%3E%3C/svg%3E");
+  background-size: 8px 13px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+
+.ag-theme .ag-header-cell-resize:hover::after,
+[class*=ag-theme-] .ag-header-cell-resize:hover::after {
+  filter: brightness(0.55);
+}
+
+.ag-ltr .ag-theme .ag-header-viewport .ag-header-cell-resize::after,
+.ag-ltr [class*=ag-theme-] .ag-header-viewport .ag-header-cell-resize::after,
+.ag-ltr .ag-theme .ag-pinned-left-header .ag-header-cell-resize::after,
+.ag-ltr [class*=ag-theme-] .ag-pinned-left-header .ag-header-cell-resize::after {
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
+}
+
+.ag-rtl .ag-theme .ag-header-viewport .ag-header-cell-resize::after,
+.ag-rtl [class*=ag-theme-] .ag-header-viewport .ag-header-cell-resize::after {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, -50%);
+}

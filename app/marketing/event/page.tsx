@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { ColDef, ICellRendererParams } from 'ag-grid-community';
+import type { AgGridReact as AgGridReactType } from 'ag-grid-react';
+import type { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import Searchbox from '@/components/ui/Searchbox';
-import Pagination from '@/components/ui/Pagination';
 import { useRouter } from 'next/navigation';
 import { SButton, SIcon, SSelect, SPagination } from '@zzou/design-system';
 
@@ -27,7 +27,21 @@ function ElectricButtonCell({ data }: ICellRendererParams) {
 }
 
 export default function Event() {
+  const gridRef = useRef<AgGridReactType>(null);
   const router = useRouter();
+
+  const fitColumns = useCallback(() => {
+    gridRef.current?.api?.sizeColumnsToFit();
+  }, []);
+
+  const onGridReady = useCallback((params: GridReadyEvent) => {
+    params.api.sizeColumnsToFit();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', fitColumns);
+    return () => window.removeEventListener('resize', fitColumns);
+  }, [fitColumns]);
   const [dateRange, setDateRange] = useState<{ startDate: Date | null; endDate: Date | null }>({
     startDate: null,
     endDate: null,
@@ -39,16 +53,24 @@ export default function Event() {
   };
 
   const [rowData] = useState([
-    { make: "Tesla", model: "Model Y", price: 64950 },
-    { make: "Ford", model: "F-Series", price: 33850 },
-    { make: "Toyota", model: "Corolla", price: 29600 },
+    { eventId: "112", eventName: "이벤트 목록 1", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "게시", eventType: "일반", eventTarget: "모든 회원", benefitType: "즉시 지급" },
+    { eventId: "113", eventName: "이벤트 2", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "게시", eventType: "퀴즈", eventTarget: "뱅킹 회원", benefitType: "당첨후 지급" },
+    { eventId: "114", eventName: "이벤트 3", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "미게시", eventType: "룰렛", eventTarget: "증권 회원", benefitType: "혜택 없음" },
   ]);
 
   const [colDefs] = useState<ColDef[]>([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric", cellRenderer: ElectricButtonCell },
+    { field: "eventId", headerName: "이벤트ID", width: 100, cellClass: "centered" },
+    { field: "eventName", headerName: "이벤트명", width: 450 },
+    { field: "eventStartDate", headerName: "이벤트 시작일", width: 150, cellClass: "centered" },
+    { field: "eventEndDate", headerName: "이벤트 종료일", width: 150, cellClass: "centered" },
+    { field: "eventStatus", headerName: "게시 여부", width: 150, cellClass: "centered" },
+    { field: "eventType", headerName: "이벤트 유형", width: 150, cellClass: "centered" },
+    { field: "eventTarget", headerName: "이벤트 대상", width: 150, cellClass: "centered" },
+    { field: "benefitType", headerName: "혜택 구분", width: 150, cellClass: "centered" },
+    // { field: "make" },
+    // { field: "model" },
+    // { field: "price" },
+    // { field: "electric", cellRenderer: ElectricButtonCell },
   ]);
 
   const listCount = [
@@ -70,13 +92,13 @@ export default function Event() {
   return (
     <div className="tbl-wrap">
       <Searchbox>
-        <DatePickerComponent onDateChange={handleDateChange} />
+        {/* <DatePickerComponent onDateChange={handleDateChange} />
         <div className="item">
           <label>검색어</label>
           <div className="input">
             <input type="text" placeholder="검색어를 입력하세요" className="form-control" />
           </div>
-        </div>
+        </div> */}
       </Searchbox>
       <div className="table-util flex space-between">
         <div className="flex align-end">
@@ -94,9 +116,11 @@ export default function Event() {
       </div>
       <div className="ag-theme">
         <AgGridReact
+          ref={gridRef}
           rowData={rowData}
           columnDefs={colDefs}
           domLayout="autoHeight"
+          onGridReady={onGridReady}
         />
         {/* <Pagination itemCount={itemCount} cntPerPage={cntPerPage} currentPage={currentPage} onChangedPage={onChangedPage} /> */}
         <div className="pagination">

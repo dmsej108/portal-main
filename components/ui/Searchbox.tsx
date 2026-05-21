@@ -1,37 +1,74 @@
+import { useState } from 'react';
+import { SButton, SInput, SIcon, SDatePicker, SSelect } from '@zzou/design-system';
+
 interface SearchboxProps {
-    children?: React.ReactNode;
+  children?: React.ReactNode;
+  onDateChange?: (startDate: Date | null, endDate: Date | null) => void;
 }
 
-export default function Searchbox({ children }: SearchboxProps) {
-    return (
-        <div className="ui-data-filter">
-            
-            <div className="form-item">
-            {children}
-                <div className="item">
-                    <label>검색어</label>
-                    <div className="input">
-                        <input type="text" placeholder="검색어를 입력하세요"  className="form-control"/>
-                    </div>
-                    {/* <div className="input">
-                        <select className="custom-select">
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div className="input">
-                        <span className="radio"><input id="evtType4" name="evtTypeGroup" type="radio" /><label htmlFor="evtType4">출석</label></span>
-                    </div>
-                    <div className="input">
-                        <span className="checkbox"><input id="evtType5" name="evtTypeGroup" type="checkbox" /><label htmlFor="evtType5">출석</label></span>
-                    </div> */}
+const dateLists = [
+  { label: '당일', value: '0' },
+  { label: '1개월', value: '30' },
+  { label: '3개월', value: '90' },
+  { label: '6개월', value: '180' },
+  { label: '1년', value: '365' },
+];
 
-                </div>
-                <div className="btn-filter-set">
-                <button type="button" className="btn btn-sm"><span className="ico-search"></span>조회</button>
-                </div>
-                
-            </div>
+export default function Searchbox({ children, onDateChange }: SearchboxProps) {
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(new Date());
+
+  const handleSearch = () => {
+    console.log('조회');
+  };
+
+  const handleChangeDate = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    const newStartDate = new Date(new Date().setDate(new Date().getDate() - parseInt(value, 10)));
+    setStartDate(newStartDate);
+    onDateChange?.(newStartDate, endDate);
+  };
+
+  const handleChangeStartDate = (date: Date | null) => {
+    setStartDate(date);
+    onDateChange?.(date, endDate);
+  };
+
+  const handleChangeEndDate = (date: Date | null) => {
+    setEndDate(date);
+    onDateChange?.(startDate, date);
+  };
+
+  return (
+    <div className="ui-data-filter">
+      <div className="form-item">
+        <div className="item">
+          <label>기간검색</label>
+          <div className="flex align-center">
+            <SSelect options={dateLists} size="small" className="mr-10" style={{ width: 100 }} onChange={handleChangeDate} />
+            <SDatePicker size="small" selectsStart selected={startDate} onChange={handleChangeStartDate} />
+            <div className="mr-10">~</div>
+            <SDatePicker size="small" selectsEnd selected={endDate} onChange={handleChangeEndDate} />
+          </div>
         </div>
-    );
+        <div className="item">
+          <label>검색어</label>
+          <div>
+            <SInput
+              placeholder="검색어를 입력하세요"
+              variant="outline"
+              size="small"
+              style={{ width: 200 }}
+            />
+          </div>
+        </div>
+        <div className="btn-filter-set">
+          <SButton variant="outline" leftIcon={<SIcon name="search" size="small" aria-hidden />} size="small" onClick={handleSearch}>
+            조회
+          </SButton>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
 }

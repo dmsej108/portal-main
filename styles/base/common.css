@@ -1463,12 +1463,14 @@ caption,
   display: flex;
 }
 
-.form-item .item>label {
+.form-item .item > label {
+  margin-right: 10px;
+  font-size: 13px;
   font-weight: bold;
   color: #222;
 }
 
-.form-item .item>label+.input {
+.form-item .item > label + .input {
   margin-left: 20px;
 }
 

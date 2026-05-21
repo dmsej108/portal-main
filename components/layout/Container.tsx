@@ -16,9 +16,14 @@ export default function Container({
   const activeMain = mainMenu.find((m) => pathname.startsWith(m.basePath));
   const subMenuItems = activeMain?.children ?? [];
 
-  const activeLeaf = subMenuItems
-    .flatMap((g) => g.children)
-    .find((leaf) => pathname === leaf.href || pathname.startsWith(leaf.href + "/"));
+  // 가장 긴 href 우선 매칭 (/marketing/event/regist가 /marketing/event보다 먼저 잡히지 않도록)
+  const leafMenus = subMenuItems.flatMap((g) => g.children);
+  const activeLeaf = leafMenus
+    .filter((leaf) => pathname === leaf.href || pathname.startsWith(leaf.href + "/"))
+    .reduce<LeafMenuItem | undefined>(
+      (best, leaf) => (!best || leaf.href.length > best.href.length ? leaf : best),
+      undefined,
+    );
 
   const activeMenuAsFlat: LeafMenuItem | undefined = activeLeaf;
 
