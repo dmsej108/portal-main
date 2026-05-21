@@ -426,3 +426,116 @@
   font-weight: 700;
   color: var(--strong-txt-color);
 }
+
+/* ── 공통코드관리 ── */
+.code-manage__split {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.code-manage__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.code-manage__desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.code-group-panel {
+  border: 1px solid var(--base-bd-color);
+  border-radius: 6px;
+  background: #fff;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+.code-group-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--base-bd-color);
+  background: var(--table-header-bg-color);
+}
+.code-group-panel__add {
+  font-size: 12px;
+  color: var(--admin-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.code-group-panel__add:hover { text-decoration: underline; }
+.code-group-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+.code-group-panel__item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 4px;
+}
+.code-group-panel__item:hover { background: #f8fafc; }
+.code-group-panel__item.is-selected {
+  border-color: var(--admin-accent);
+  background: var(--admin-accent-subtle);
+}
+.code-group-panel__item.is-off { opacity: 0.55; }
+.code-group-panel__code {
+  font-size: 11px;
+  font-family: monospace;
+  color: #6b7280;
+}
+.code-group-panel__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--strong-txt-color);
+}
+.code-group-panel__count {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.code-group-panel__empty {
+  padding: 24px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.code-detail {
+  border: 1px solid var(--base-bd-color);
+  border-radius: 6px;
+  background: #fff;
+  padding: 16px 20px;
+}
+.code-detail--empty {
+  padding: 32px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+  border: 1px dashed var(--base-bd-color);
+  border-radius: 6px;
+  background: var(--base-bg-color);
+}
+.code-detail__footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--base-bd-color);
+}
