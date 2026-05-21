@@ -1,10 +1,11 @@
-import FileUpload from '@/components/ui/FileUpload';
-import { SButton, SInput, SRadioGroup } from '@zzou/design-system';
+// import FileUpload from '@/components/ui/FileUpload';
+import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@zzou/design-system';
+import { useState } from 'react';
 import type { UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
 type DefaultFormProps = {
-  register: any;
-  errors: any;
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
   watch: UseFormWatch<any>;
   setValue: UseFormSetValue<any>;
   setFileList: React.Dispatch<React.SetStateAction<File[]>>;
@@ -18,20 +19,37 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
     { label: '출석', value: 'attendance' },
     { label: '설문', value: 'survey' },
   ];
+
   const eventTarget = [
     { label: '모든 회원', value: 'all' },
     { label: '뱅킹 회원', value: 'banking' },
     { label: '증권 회원', value: 'securities' },
   ];
+
   const eventStatus = [
     { label: '게시', value: 'published' },
     { label: '미게시', value: 'unpublished' },
   ];
+
   const benefitType = [
     { label: '즉시 지급', value: 'immediate' },
     { label: '당첨후 지급', value: 'after_win' },
     { label: '혜택 없음', value: 'no_benefit' },
   ];
+
+  const chipsList: { label: string; value: string }[] = [
+    { label: 'KB 그룹1', value: 'banking' },
+    { label: 'KB 그룹2', value: 'securities' },
+  ];
+
+  const [chips, setChips] = useState<{ label: string; value: string }[]>(chipsList);
+
+  const useTypeList: { label: string; value: string }[] = [
+    { label: '참여 제한 없음', value: 'no_limit' },
+    { label: '참여 제한 있음', value: 'limit' },
+  ];
+
+  const [selectedUseType, setSelectedUseType] = useState<string>('no_limit');
 
   return (
     <table className="table reg mt-10">
@@ -65,7 +83,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               <div className="input-guide error"><span className="error">{errors.eventType.message}</span></div>
             )}
           </td>
-          <th scope="row">게시여부<span className="ess"><span className="offscreen">필수입력</span></span></th>
+          <th scope="row">게시 여부<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
             <SRadioGroup
               name="eventStatus"
@@ -94,68 +112,90 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
             {errors.eventTarget && (
               <div className="input-guide error"><span className="error">{errors.eventTarget.message}</span></div>
             )}
-
             <div className="mt-15">
-              {/* <button type="button" className="btn btn-slm">회원그룹 선택</button> */}
-              <SButton type="button" size="small" variant="outline">회원그룹 선택</SButton>
-            </div>
-            
-            <div className="mt-15">
-              <div className="ui-chips-item">
-                <span>KB뱅킹</span>
-              <button type="button" className="ui-chips-del"><span className="offscreen">삭제하기</span></button>
-              </div>
+              <SButton type="button" size="small" variant="outline" className="mr-10">회원그룹 추가</SButton>
+              {chips.map((item) => (
+                <SChip key={item.value} label={item.label} size="small" variant="primary" className="mr-5" onClose={() => setChips(prev => prev.filter(c => c.value !== item.value))} />
+              ))}
             </div>
           
           </td>
         </tr>
         <tr>
           <th scope="row">이벤트 기간<span className="ess"><span className="offscreen">필수입력</span></span></th>
-          <td></td>
+          <td>
+            <div className="flex align-center">
+              <div>
+                <SDatePicker
+                  name="eventStartDate"
+                  size="small"
+                  value={watch('eventStartDate')}
+                  onChange={(date) => setValue('eventStartDate', date, { shouldValidate: true })}
+                />
+              </div>
+              <div className="mr-10">~</div>
+              <div>
+                <SDatePicker
+                  name="eventEndDate"
+                  size="small"
+                  value={watch('eventEndDate')}
+                  onChange={(date) => setValue('eventEndDate', date, { shouldValidate: true })}
+                />
+              </div>
+            </div>
+          </td>
           <th scope="row">당첨자 발표일<span className="ess"><span className="offscreen">필수입력</span></span></th>
-          <td></td>
+          <td>
+            <SDatePicker
+              name="winnerAnnouncementDate"
+              size="small"
+              value={watch('winnerAnnouncementDate')}
+              onChange={(date) => setValue('winnerAnnouncementDate', date, { shouldValidate: true })}
+            />
+          </td>
         </tr>
         <tr>
           <th scope="row">혜택 구분<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
-            <div className="reg-group">
-              <SRadioGroup
-                name="benefitType"
-                size="small"
-                direction="horizontal"
-                options={benefitType}
-                value={watch('benefitType')}
-                onChange={(value) => setValue('benefitType', value, { shouldValidate: true })}
-              />
-            </div>
+            <SRadioGroup
+              name="benefitType"
+              size="small"
+              direction="horizontal"
+              options={benefitType}
+              value={watch('benefitType')}
+              onChange={(value) => setValue('benefitType', value, { shouldValidate: true })}
+            />
             {errors.benefitType && (
               <div className="input-guide error"><span className="error">{errors.benefitType.message}</span></div>
             )}
           </td>
           <th scope="row">참여제한<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
-            <div className="reg-group inline">
-              <div className="reg-item">
-                <select className="custom-select" {...register('useType')}>
-                  <option value="1">1</option>
-                </select>
-              </div>
-            </div>
+            <SSelect
+              name="useType"
+              size="small"
+              options={useTypeList}
+              value={selectedUseType}
+              onChange={(e) => {
+                setSelectedUseType(e.target.value);
+                setValue('useType', e.target.value, { shouldValidate: true });
+              }}
+            />
             {errors.useType && (
               <div className="input-guide error"><span className="error">{errors.useType.message}</span></div>
             )}
           </td>
         </tr>
         <tr>
-          <th scope="row">마케팅 정보 PUSH<br />수신동의<span className="ess"><span className="offscreen">필수입력</span></span></th>
+          <th scope="row">마케팅 정보 PUSH<br />수신동의</th>
           <td colSpan={3}>
-            <div className="reg-group">
-              <div className="reg-item">
-                <span className="checkbox">
-                  <input type="checkbox" id="marketingPushAgreement" value={true} {...register('marketingPushAgreement')} />
-                  <label htmlFor="marketingPushAgreement">마케팅 정보 PUSH 수신동의</label>
-                </span>
-              </div>
+            <div className="flex align-center">
+              <SCheckbox
+                label="마케팅 정보 PUSH 수신동의"
+                size="small"
+                checked={!!watch('marketingPushAgreement')}
+                onChange={(checked) => setValue('marketingPushAgreement', checked, { shouldValidate: true })}
+              />
             </div>
             {errors.marketingPushAgreement ? (
               <div className="input-guide error"><span className="error">{errors.marketingPushAgreement.message}</span></div>
@@ -165,20 +205,31 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           </td>
         </tr>
         <tr>
-          <th scope="row">이벤트 배너<span className="ess"><span className="offscreen">필수입력</span></span></th>
+          <th scope="row">이벤트 배너</th>
           <td>
-            <FileUpload fileList={watch('eventBanner')} setFileList={setFileList} />
+            <SFileInput
+              name="eventBanner"
+              placeholder="이벤트 배너를 선택해주세요."
+              size="small"
+              value={watch('eventBanner')}
+              accept={'.jpg, .jpeg, .png, .gif'}
+              maxSize={10 * 1024 * 1024}
+              onChange={(file) => setValue('eventBanner', file, { shouldValidate: true })}
+            />
+            {/* <FileUpload fileList={watch('eventBanner')} setFileList={setFileList} /> */}
             {errors.eventBanner && (
               <div className="input-guide error"><span className="error">{errors.eventBanner.message}</span></div>
             )}
           </td>
-          <th scope="row">이미지 설명<span className="ess"><span className="offscreen">필수입력</span></span></th>
+          <th scope="row">이미지 설명</th>
           <td>
-            <div className="reg-group">
-              <div className="reg-item">
-                <input type="text" className="form-control" />
-              </div>
-            </div>
+            <STextarea
+              name="eventBannerDescription"
+              placeholder="이벤트 배너 설명을 입력해주세요."
+              size="small"
+              value={watch('eventBannerDescription')}
+              onChange={(e) => setValue('eventBannerDescription', e.target.value, { shouldValidate: true })}
+            />
           </td>
         </tr>
       </tbody>
