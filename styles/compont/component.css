@@ -161,7 +161,7 @@
 .menu-detail__footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--base-bd-color); }
 .gap-16 { gap: 16px; }
 
-/* ── 기업 프리미엄 메인화면관리 ── */
+/* ── 메인화면관리 (개인뱅킹) ── */
 .ep-main__versions {
   display: flex;
   gap: 10px;

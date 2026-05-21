@@ -29,7 +29,7 @@ const statusFilterOptions = [
   { label: '임시저장', value: 'DRAFT' },
 ];
 
-export default function EnterprisePremiumMainPage() {
+export default function PersonalBankingMainPage() {
   const gridRef = useRef<AgGridReactType>(null);
   const [versions, setVersions] = useState<MainVersion[]>(MOCK_VERSIONS);
   const [activeVersionId, setActiveVersionId] = useState('V3');

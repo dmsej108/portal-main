@@ -2,7 +2,7 @@
 
 import FormTitle from '@/components/ui/FormTitle';
 import { SButton, SInput, SRadioGroup, SSelect, STextarea } from '@zzou/design-system';
-import type { MainBlock, BlockType, UseYn } from './main-data';
+import type { MainBlock, BlockType } from './main-data';
 import { BLOCK_TYPE_LABEL } from './main-data';
 
 const blockTypeOptions = (Object.keys(BLOCK_TYPE_LABEL) as BlockType[]).map((key) => ({
@@ -68,7 +68,7 @@ export default function BlockDetailForm({ block, onSave, onDelete }: BlockDetail
           <tr>
             <th scope="row">링크 URL</th>
             <td>
-              <SInput type="text" size="small" defaultValue={block.linkUrl} placeholder="/premium/..." />
+              <SInput type="text" size="small" defaultValue={block.linkUrl} placeholder="/banking/..." />
             </td>
           </tr>
           <tr>

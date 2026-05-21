@@ -24,7 +24,7 @@ function PreviewBlock({ block }: { block: MainBlock }) {
         <div className="ep-preview__quick">
           <p>{block.title}</p>
           <div className="ep-preview__quick-grid">
-            {['이체', '조회', '승인', '급여'].map((label) => (
+            {['이체', '조회', '대출', '환전'].map((label) => (
               <span key={label}>{label}</span>
             ))}
           </div>
@@ -34,7 +34,7 @@ function PreviewBlock({ block }: { block: MainBlock }) {
       return (
         <div className="ep-preview__notice">
           <span className="ep-preview__tag">공지</span>
-          {block.title} · 시스템 점검 안내 (05.25)
+          {block.title} · 모바일 앱 업데이트 안내
         </div>
       );
     case 'PRODUCT':
@@ -75,7 +75,7 @@ export default function MainPreview({ blocks, versionName }: MainPreviewProps) {
       <div className="ep-preview__device">
         <div className="ep-preview__statusbar">
           <span>9:41</span>
-          <span>기업/프리미엄</span>
+          <span>개인뱅킹</span>
         </div>
         <div className="ep-preview__body">
           {active.length === 0 && <p className="ep-preview__empty">노출 블록이 없습니다.</p>}
