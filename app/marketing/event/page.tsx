@@ -1,56 +1,23 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { AgGridReact as AgGridReactType } from 'ag-grid-react';
-import type { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
+import type { ColDef, GridReadyEvent } from 'ag-grid-community';
 import Searchbox from '@/components/ui/Searchbox';
 import { useRouter } from 'next/navigation';
-import { SButton, SIcon, SSelect, SPagination } from '@zzou/design-system';
+import { SButton, SSelect, SPagination } from '@zzou/design-system';
 
 const AgGridReact = dynamic(
   () => import('@/lib/config/ag-grid').then((m) => ({ default: m.AgGridReact })),
   { ssr: false }
 );
-const DatePickerComponent = dynamic(() => import('@/components/ui/DatePicker'), { ssr: false });
-
-function ElectricButtonCell({ data }: ICellRendererParams) {
-  return (
-    <SButton
-      variant="outline"
-      size="small"
-      onClick={() => console.log('row:', data)}
-    >
-      button
-    </SButton>
-  );
-}
 
 export default function Event() {
-  const gridRef = useRef<AgGridReactType>(null);
   const router = useRouter();
-
-  const fitColumns = useCallback(() => {
-    gridRef.current?.api?.sizeColumnsToFit();
-  }, []);
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     params.api.sizeColumnsToFit();
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', fitColumns);
-    return () => window.removeEventListener('resize', fitColumns);
-  }, [fitColumns]);
-  const [dateRange, setDateRange] = useState<{ startDate: Date | null; endDate: Date | null }>({
-    startDate: null,
-    endDate: null,
-  });
-
-  const handleDateChange = (startDate: Date | null, endDate: Date | null) => {
-    setDateRange({ startDate, endDate });
-    console.log('날짜 변경:', { startDate, endDate });
-  };
 
   const [rowData] = useState([
     { eventId: "112", eventName: "이벤트 목록 1", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "게시", eventType: "일반", eventTarget: "모든 회원", benefitType: "즉시 지급" },
@@ -116,7 +83,6 @@ export default function Event() {
       </div>
       <div className="ag-theme">
         <AgGridReact
-          ref={gridRef}
           rowData={rowData}
           columnDefs={colDefs}
           domLayout="autoHeight"
