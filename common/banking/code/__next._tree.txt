@@ -1,0 +1,7 @@
+:HL["/potal-admin/_next/static/chunks/dc7dd9324206fd56.css","style"]
+:HL["/potal-admin/_next/static/chunks/a72d5c93479a36f8.css","style"]
+:HL["/potal-admin/_next/static/chunks/d9721cb8dc728198.css","style"]
+:HL["/potal-admin/_next/static/chunks/e6a3d8c5ddec5f35.css","style"]
+:HL["/potal-admin/_next/static/media/797e433ab948586e-s.p.479bea2b.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/potal-admin/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"buildId":"SIjjn0EKUav5sJLjwr1uW","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"common","paramType":null,"paramKey":"common","hasRuntimePrefetch":false,"slots":{"children":{"name":"banking","paramType":null,"paramKey":"banking","hasRuntimePrefetch":false,"slots":{"children":{"name":"code","paramType":null,"paramKey":"code","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

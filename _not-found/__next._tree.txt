@@ -1,0 +1,5 @@
+:HL["/potal-admin/_next/static/chunks/dc7dd9324206fd56.css","style"]
+:HL["/potal-admin/_next/static/chunks/a72d5c93479a36f8.css","style"]
+:HL["/potal-admin/_next/static/chunks/d9721cb8dc728198.css","style"]
+:HL["/potal-admin/_next/static/chunks/e6a3d8c5ddec5f35.css","style"]
+0:{"buildId":"SIjjn0EKUav5sJLjwr1uW","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

@@ -1,0 +1,10 @@
+1:"$Sreact.fragment"
+2:I[82963,["/potal-admin/_next/static/chunks/7e415d2fcc7f9f9b.js","/potal-admin/_next/static/chunks/52aa936ba56cbc40.js"],"default"]
+3:I[92337,["/potal-admin/_next/static/chunks/483a12865e0bba97.js","/potal-admin/_next/static/chunks/1d3be43a6dda29b7.js"],"default"]
+4:I[64226,["/potal-admin/_next/static/chunks/483a12865e0bba97.js","/potal-admin/_next/static/chunks/1d3be43a6dda29b7.js"],"default"]
+5:I[36768,["/potal-admin/_next/static/chunks/7e415d2fcc7f9f9b.js","/potal-admin/_next/static/chunks/52aa936ba56cbc40.js","/potal-admin/_next/static/chunks/6d0f41f4e0685971.js","/potal-admin/_next/static/chunks/03917c9e0ce05507.js"],"default"]
+:HL["/potal-admin/_next/static/chunks/dc7dd9324206fd56.css","style"]
+:HL["/potal-admin/_next/static/chunks/a72d5c93479a36f8.css","style"]
+:HL["/potal-admin/_next/static/chunks/d9721cb8dc728198.css","style"]
+:HL["/potal-admin/_next/static/chunks/e6a3d8c5ddec5f35.css","style"]
+0:{"buildId":"SIjjn0EKUav5sJLjwr1uW","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/potal-admin/_next/static/chunks/dc7dd9324206fd56.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/potal-admin/_next/static/chunks/a72d5c93479a36f8.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/potal-admin/_next/static/chunks/d9721cb8dc728198.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/potal-admin/_next/static/chunks/e6a3d8c5ddec5f35.css","precedence":"next"}],["$","script","script-0",{"src":"/potal-admin/_next/static/chunks/7e415d2fcc7f9f9b.js","async":true}],["$","script","script-1",{"src":"/potal-admin/_next/static/chunks/52aa936ba56cbc40.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[["$","$L5",null,{}],[]]}]}]}]}]]}],"loading":null,"isPartial":false}
