@@ -4,18 +4,18 @@ import { useState } from 'react';
 import type { FieldErrors, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
 type DefaultFormFields = {
-  eventName: string;
-  eventType: string;
-  eventStatus: string;
-  eventTarget: string;
-  eventStartDate: string;
-  eventEndDate: string;
-  winnerAnnouncementDate: string;
-  benefitType: string;
-  useType: string;
-  marketingPushAgreement: boolean;
-  eventBanner: File[];
-  eventBannerDescription: string;
+  eventName?: string;
+  eventType?: string;
+  eventStatus?: string;
+  eventTarget?: string;
+  eventStartDate?: string;
+  eventEndDate?: string;
+  winnerAnnouncementDate?: string;
+  benefitType?: string;
+  useType?: string;
+  marketingPushAgreement?: boolean;
+  eventBanner?: File[];
+  eventBannerDescription?: string;
 };
 
 type DefaultFormProps = {
