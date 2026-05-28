@@ -272,15 +272,16 @@ export function filterMenuTree(
   };
 
   const walk = (list: MenuNode[]): MenuNode[] =>
-    list
-      .map((node) => {
-        const children = node.children ? walk(node.children) : [];
-        if (match(node) || children.length > 0) {
-          return { ...node, children: children.length ? children : node.children?.length ? children : undefined };
-        }
-        return null;
-      })
-      .filter((n): n is MenuNode => n !== null);
+    list.reduce<MenuNode[]>((acc, node) => {
+      const children = node.children ? walk(node.children) : [];
+      if (match(node) || children.length > 0) {
+        acc.push({
+          ...node,
+          children: children.length > 0 ? children : undefined,
+        });
+      }
+      return acc;
+    }, []);
 
   return walk(nodes);
 }

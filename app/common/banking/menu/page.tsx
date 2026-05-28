@@ -69,7 +69,6 @@ export default function CommonBankingMenuPage() {
             <label>메뉴명/코드</label>
             <SInput
               placeholder="메뉴명, 메뉴코드, 경로"
-              variant="outline"
               size="small"
               style={{ width: 220 }}
               value={keyword}
