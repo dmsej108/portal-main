@@ -1,9 +1,22 @@
 // import FileUpload from '@/components/ui/FileUpload';
 import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@zzou/design-system';
 import { useState } from 'react';
-import type { FieldErrors, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form';
+import type { FieldErrors, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
-type DefaultFormFields = {
+type DefaultFormProps = {
+  register: (name: keyof DefaultFormValues) => {
+    name: string;
+    onBlur?: (...args: unknown[]) => void;
+    onChange?: (...args: unknown[]) => void;
+    ref?: (instance: unknown) => void;
+  };
+  errors: FieldErrors<DefaultFormValues>;
+  watch: UseFormWatch<DefaultFormValues>;
+  setValue: UseFormSetValue<DefaultFormValues>;
+  setFileList: React.Dispatch<React.SetStateAction<File[]>>;
+};
+
+type DefaultFormValues = {
   eventName?: string;
   eventType?: string;
   eventStatus?: string;
@@ -14,16 +27,8 @@ type DefaultFormFields = {
   benefitType?: string;
   useType?: string;
   marketingPushAgreement?: boolean;
-  eventBanner?: File[];
+  eventBanner?: File[] | null;
   eventBannerDescription?: string;
-};
-
-type DefaultFormProps = {
-  register: UseFormRegister<DefaultFormFields>;
-  errors: FieldErrors<DefaultFormFields>;
-  watch: UseFormWatch<DefaultFormFields>;
-  setValue: UseFormSetValue<DefaultFormFields>;
-  setFileList: React.Dispatch<React.SetStateAction<File[]>>;
 };
 
 export default function DefaultForm({ register, errors, watch, setValue, setFileList }: DefaultFormProps) {
@@ -179,7 +184,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           <th scope="row">혜택 구분<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
             <SRadioGroup
-              {...register('benefitType')}
+              name="benefitType"
               size="small"
               direction="horizontal"
               options={benefitType}
