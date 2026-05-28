@@ -1,11 +1,18 @@
 import { SButton, SInput, SRadioGroup } from '@zzou/design-system';
 import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldErrors } from 'react-hook-form';
 
+type BenefitFormFields = {
+  fcfsUse?: string;
+  numberOfParticipants?: string;
+  benefitList?: string;
+  benefitAmount?: string;
+};
+
 type BenefitFormProps = {
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
-  watch: UseFormWatch<any>;
-  setValue: UseFormSetValue<any>;
+  register: UseFormRegister<BenefitFormFields>;
+  errors: FieldErrors<BenefitFormFields>;
+  watch: UseFormWatch<BenefitFormFields>;
+  setValue: UseFormSetValue<BenefitFormFields>;
 };
 
 export default function BenefitForm({ errors, watch, setValue }: BenefitFormProps) {
@@ -52,7 +59,7 @@ export default function BenefitForm({ errors, watch, setValue }: BenefitFormProp
                   onChange={(e) => setValue('numberOfParticipants', e.target.value, { shouldValidate: true })}
                 />
                 {errors.numberOfParticipants && (
-                  <div className="input-guide error"><span className="error">{errors.numberOfParticipants.message}</span></div>
+                  <div className="input-guide error"><span className="error">{errors.numberOfParticipants.message as string}</span></div>
                 )}
               </td>
             </>
@@ -71,7 +78,7 @@ export default function BenefitForm({ errors, watch, setValue }: BenefitFormProp
                 onChange={(value) => setValue('benefitList', value, { shouldValidate: true })}
               />
               {errors.benefitList && (
-                <div className="input-guide error"><span className="error">{errors.benefitList.message}</span></div>
+                <div className="input-guide error"><span className="error">{errors.benefitList.message as string}</span></div>
               )}
             </div>
             <div className="mt-10">
