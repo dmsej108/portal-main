@@ -46,9 +46,9 @@ export default function Searchbox({ children, onDateChange }: SearchboxProps) {
           <label>기간검색</label>
           <div className="flex align-center">
             <SSelect options={dateLists} size="small" className="mr-10" style={{ width: 100 }} onChange={handleChangeDate} />
-            <SDatePicker size="small" selectsStart selected={startDate} onChange={handleChangeStartDate} />
+            <SDatePicker size="small" onDateChange={handleChangeStartDate} />
             <div className="mr-10">~</div>
-            <SDatePicker size="small" selectsEnd selected={endDate} onChange={handleChangeEndDate} />
+            <SDatePicker size="small" onDateChange={handleChangeEndDate} />
           </div>
         </div>
         <div className="item">
@@ -56,7 +56,6 @@ export default function Searchbox({ children, onDateChange }: SearchboxProps) {
           <div>
             <SInput
               placeholder="검색어를 입력하세요"
-              variant="outline"
               size="small"
               style={{ width: 200 }}
             />
