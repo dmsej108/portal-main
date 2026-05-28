@@ -1,13 +1,28 @@
 // import FileUpload from '@/components/ui/FileUpload';
 import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@zzou/design-system';
 import { useState } from 'react';
-import type { UseFormSetValue, UseFormWatch } from 'react-hook-form';
+import type { FieldErrors, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form';
+
+type DefaultFormFields = {
+  eventName: string;
+  eventType: string;
+  eventStatus: string;
+  eventTarget: string;
+  eventStartDate: string;
+  eventEndDate: string;
+  winnerAnnouncementDate: string;
+  benefitType: string;
+  useType: string;
+  marketingPushAgreement: boolean;
+  eventBanner: File[];
+  eventBannerDescription: string;
+};
 
 type DefaultFormProps = {
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
-  watch: UseFormWatch<any>;
-  setValue: UseFormSetValue<any>;
+  register: UseFormRegister<DefaultFormFields>;
+  errors: FieldErrors<DefaultFormFields>;
+  watch: UseFormWatch<DefaultFormFields>;
+  setValue: UseFormSetValue<DefaultFormFields>;
   setFileList: React.Dispatch<React.SetStateAction<File[]>>;
 };
 
@@ -43,6 +58,9 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
   ];
 
   const [chips, setChips] = useState<{ label: string; value: string }[]>(chipsList);
+  const [, setEventStartDate] = useState<Date | null>(null);
+  const [, setEventEndDate] = useState<Date | null>(null);
+  const [, setWinnerDate] = useState<Date | null>(null);
 
   const useTypeList: { label: string; value: string }[] = [
     { label: '참여 제한 없음', value: 'no_limit' },
@@ -64,7 +82,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           <td colSpan={3}>
             <SInput type="text" size="small" placeholder="이벤트 제목을 입력해주세요." {...register('eventName')} />
             {errors.eventName && (
-              <div className="input-guide error"><span className="error">{errors.eventName.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.eventName.message as string}</span></div>
             )}
           </td>
         </tr>
@@ -80,7 +98,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               onChange={(value) => setValue('eventType', value, { shouldValidate: true })}
             />
             {errors.eventType && (
-              <div className="input-guide error"><span className="error">{errors.eventType.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.eventType.message as string}</span></div>
             )}
           </td>
           <th scope="row">게시 여부<span className="ess"><span className="offscreen">필수입력</span></span></th>
@@ -94,7 +112,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               onChange={(value) => setValue('eventStatus', value, { shouldValidate: true })}
             />
             {errors.eventStatus && (
-              <div className="input-guide error"><span className="error">{errors.eventStatus.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.eventStatus.message as string}</span></div>
             )}
           </td>
         </tr>
@@ -110,7 +128,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               onChange={(value) => setValue('eventTarget', value, { shouldValidate: true })}
             />
             {errors.eventTarget && (
-              <div className="input-guide error"><span className="error">{errors.eventTarget.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.eventTarget.message as string}</span></div>
             )}
             <div className="mt-15">
               <SButton type="button" size="small" variant="outline" className="mr-10">회원그룹 추가</SButton>
@@ -127,19 +145,21 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
             <div className="flex align-center">
               <div>
                 <SDatePicker
-                  name="eventStartDate"
                   size="small"
-                  value={watch('eventStartDate')}
-                  onChange={(date) => setValue('eventStartDate', date, { shouldValidate: true })}
+                  onDateChange={(date) => {
+                    setEventStartDate(date);
+                    setValue('eventStartDate', date ? date.toISOString().slice(0, 10) : '', { shouldValidate: true });
+                  }}
                 />
               </div>
               <div className="mr-10">~</div>
               <div>
                 <SDatePicker
-                  name="eventEndDate"
                   size="small"
-                  value={watch('eventEndDate')}
-                  onChange={(date) => setValue('eventEndDate', date, { shouldValidate: true })}
+                  onDateChange={(date) => {
+                    setEventEndDate(date);
+                    setValue('eventEndDate', date ? date.toISOString().slice(0, 10) : '', { shouldValidate: true });
+                  }}
                 />
               </div>
             </div>
@@ -147,10 +167,11 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           <th scope="row">당첨자 발표일<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
             <SDatePicker
-              name="winnerAnnouncementDate"
               size="small"
-              value={watch('winnerAnnouncementDate')}
-              onChange={(date) => setValue('winnerAnnouncementDate', date, { shouldValidate: true })}
+              onDateChange={(date) => {
+                setWinnerDate(date);
+                setValue('winnerAnnouncementDate', date ? date.toISOString().slice(0, 10) : '', { shouldValidate: true });
+              }}
             />
           </td>
         </tr>
@@ -158,7 +179,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           <th scope="row">혜택 구분<span className="ess"><span className="offscreen">필수입력</span></span></th>
           <td>
             <SRadioGroup
-              name="benefitType"
+              {...register('benefitType')}
               size="small"
               direction="horizontal"
               options={benefitType}
@@ -166,7 +187,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               onChange={(value) => setValue('benefitType', value, { shouldValidate: true })}
             />
             {errors.benefitType && (
-              <div className="input-guide error"><span className="error">{errors.benefitType.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.benefitType.message as string}</span></div>
             )}
           </td>
           <th scope="row">참여제한<span className="ess"><span className="offscreen">필수입력</span></span></th>
@@ -182,7 +203,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               }}
             />
             {errors.useType && (
-              <div className="input-guide error"><span className="error">{errors.useType.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.useType.message as string}</span></div>
             )}
           </td>
         </tr>
@@ -198,7 +219,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               />
             </div>
             {errors.marketingPushAgreement ? (
-              <div className="input-guide error"><span className="error">{errors.marketingPushAgreement.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.marketingPushAgreement.message as string}</span></div>
             ) : (
               <span className="input-guide">&apos;필수&apos; 선택 시 마케팅 정보(PUSH) 수신에 동의한 회원만 이벤트 참여가 가능합니다.</span>
             )}
@@ -208,17 +229,18 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
           <th scope="row">이벤트 배너</th>
           <td>
             <SFileInput
-              name="eventBanner"
               placeholder="이벤트 배너를 선택해주세요."
               size="small"
-              value={watch('eventBanner')}
               accept={'.jpg, .jpeg, .png, .gif'}
               maxSize={10 * 1024 * 1024}
-              onChange={(file) => setValue('eventBanner', file, { shouldValidate: true })}
+              onChange={(file) => {
+                setFileList(file);
+                setValue('eventBanner', file, { shouldValidate: true });
+              }}
             />
             {/* <FileUpload fileList={watch('eventBanner')} setFileList={setFileList} /> */}
             {errors.eventBanner && (
-              <div className="input-guide error"><span className="error">{errors.eventBanner.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.eventBanner.message as string}</span></div>
             )}
           </td>
           <th scope="row">이미지 설명</th>
