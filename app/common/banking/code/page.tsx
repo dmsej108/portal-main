@@ -1,8 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { AgGridReact as AgGridReactType } from 'ag-grid-react';
 import type { ColDef, GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { SButton, SIcon, SInput, SSelect } from '@zzou/design-system';
 import CodeGroupPanel from './CodeGroupPanel';
@@ -21,7 +20,6 @@ const AgGridReact = dynamic(
 );
 
 export default function CommonBankingCodePage() {
-  const gridRef = useRef<AgGridReactType>(null);
   const [selectedGroupCode, setSelectedGroupCode] = useState('CHANNEL_TYPE');
   const [selectedCodeId, setSelectedCodeId] = useState<string | null>('C001');
   const [useYn, setUseYn] = useState('');
@@ -75,22 +73,9 @@ export default function CommonBankingCodePage() {
     if (e.data?.id) setSelectedCodeId(e.data.id);
   };
 
-  const fitColumns = useCallback(() => {
-    gridRef.current?.api?.sizeColumnsToFit();
-  }, []);
-
   const onGridReady = useCallback((params: GridReadyEvent) => {
     params.api.sizeColumnsToFit();
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', fitColumns);
-    return () => window.removeEventListener('resize', fitColumns);
-  }, [fitColumns]);
-
-  useEffect(() => {
-    fitColumns();
-  }, [rowData, fitColumns]);
 
   const [colDefs] = useState<ColDef[]>([
     { field: 'code', headerName: '코드', width: 110, cellClass: 'centered' },
@@ -126,7 +111,6 @@ export default function CommonBankingCodePage() {
             <label>코드/코드명</label>
             <SInput
               placeholder="검색"
-              variant="outline"
               size="small"
               style={{ width: 180 }}
               value={keyword}
@@ -196,7 +180,6 @@ export default function CommonBankingCodePage() {
 
           <div className="ag-theme tbl-wrap">
             <AgGridReact
-              ref={gridRef}
               rowData={rowData}
               columnDefs={colDefs}
               domLayout="autoHeight"
