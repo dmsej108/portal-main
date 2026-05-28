@@ -1,8 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { AgGridReact as AgGridReactType } from 'ag-grid-react';
 import type { ColDef, GridReadyEvent } from 'ag-grid-community';
 import { SButton, SIcon, SSelect } from '@zzou/design-system';
 import BlockListPanel from './BlockListPanel';
@@ -30,7 +29,6 @@ const statusFilterOptions = [
 ];
 
 export default function PersonalBankingMainPage() {
-  const gridRef = useRef<AgGridReactType>(null);
   const [versions, setVersions] = useState<MainVersion[]>(MOCK_VERSIONS);
   const [activeVersionId, setActiveVersionId] = useState('V3');
   const [selectedBlockId, setSelectedBlockId] = useState<string | null>('B1');
@@ -62,18 +60,9 @@ export default function PersonalBankingMainPage() {
     setSelectedBlockId(first?.id ?? null);
   };
 
-  const fitColumns = useCallback(() => {
-    gridRef.current?.api?.sizeColumnsToFit();
-  }, []);
-
   const onGridReady = useCallback((params: GridReadyEvent) => {
     params.api.sizeColumnsToFit();
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', fitColumns);
-    return () => window.removeEventListener('resize', fitColumns);
-  }, [fitColumns]);
 
   const [historyCols] = useState<ColDef[]>([
     { field: 'deployId', headerName: '배포ID', width: 100, cellClass: 'centered' },
@@ -171,7 +160,6 @@ export default function PersonalBankingMainPage() {
         <h3 className="ep-main__history-title">배포 이력</h3>
         <div className="ag-theme tbl-wrap" style={{ marginTop: 0 }}>
           <AgGridReact
-            ref={gridRef}
             rowData={MOCK_DEPLOY_HISTORY}
             columnDefs={historyCols}
             domLayout="autoHeight"
