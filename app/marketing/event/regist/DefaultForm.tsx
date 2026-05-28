@@ -1,34 +1,18 @@
 // import FileUpload from '@/components/ui/FileUpload';
 import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@zzou/design-system';
 import { useState } from 'react';
-import type { FieldErrors, UseFormSetValue, UseFormWatch } from 'react-hook-form';
+import type { FieldErrors, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
 type DefaultFormProps = {
-  register: (name: keyof DefaultFormValues) => {
-    name: string;
-    onBlur?: (...args: unknown[]) => void;
-    onChange?: (...args: unknown[]) => void;
-    ref?: (instance: unknown) => void;
-  };
-  errors: FieldErrors<DefaultFormValues>;
-  watch: UseFormWatch<DefaultFormValues>;
-  setValue: UseFormSetValue<DefaultFormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: UseFormRegister<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  errors: FieldErrors<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  watch: UseFormWatch<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setValue: UseFormSetValue<any>;
   setFileList: React.Dispatch<React.SetStateAction<File[]>>;
-};
-
-type DefaultFormValues = {
-  eventName?: string;
-  eventType?: string;
-  eventStatus?: string;
-  eventTarget?: string;
-  eventStartDate?: string;
-  eventEndDate?: string;
-  winnerAnnouncementDate?: string;
-  benefitType?: string;
-  useType?: string;
-  marketingPushAgreement?: boolean;
-  eventBanner?: File[] | null;
-  eventBannerDescription?: string;
 };
 
 export default function DefaultForm({ register, errors, watch, setValue, setFileList }: DefaultFormProps) {
