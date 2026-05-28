@@ -1,12 +1,17 @@
-import { useState } from 'react';
 import { SInput, SSelect } from '@zzou/design-system';
 import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldErrors } from 'react-hook-form';
 
+type FunctionFormFields = {
+  buttonEvent?: string;
+  buttonName?: string;
+  externalLink?: string;
+};
+
 type FunctionFormProps = {
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
-  watch: UseFormWatch<any>;
-  setValue: UseFormSetValue<any>;
+  register: UseFormRegister<FunctionFormFields>;
+  errors: FieldErrors<FunctionFormFields>;
+  watch: UseFormWatch<FunctionFormFields>;
+  setValue: UseFormSetValue<FunctionFormFields>;
 };
 
 export default function FunctionForm({ register, errors, watch, setValue }: FunctionFormProps) {
@@ -15,7 +20,7 @@ export default function FunctionForm({ register, errors, watch, setValue }: Func
     { label: '참여 후 외부 링크', value: 'after_link' },
   ];
 
-  const [selectedButtonEvent, setSelectedButtonEvent] = useState<string>('after_message');
+  const selectedButtonEvent = watch('buttonEvent') ?? 'after_message';
 
   return (
     <table className="table reg mt-10">
@@ -35,12 +40,11 @@ export default function FunctionForm({ register, errors, watch, setValue }: Func
               value={selectedButtonEvent}
               onChange={(e) => {
                 const value = e.target.value;
-                setSelectedButtonEvent(value);
                 setValue('buttonEvent', value, { shouldValidate: true });
               }}
             />
             {errors.buttonEvent && (
-              <div className="input-guide error"><span className="error">{errors.buttonEvent.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.buttonEvent.message as unknown as string}</span></div>
             )}
           </td>
           <th scope="row">버튼 명<span className="ess"><span className="offscreen">필수입력</span></span></th>
@@ -54,7 +58,7 @@ export default function FunctionForm({ register, errors, watch, setValue }: Func
             />
             <span className="input-guide">App에서 버튼에 표기할 버튼 명을 입력하십시오. (예: 참여하기)</span>
             {errors.buttonName && (
-              <div className="input-guide error"><span className="error">{errors.buttonName.message}</span></div>
+              <div className="input-guide error"><span className="error">{errors.buttonName.message as unknown as string}</span></div>
             )}
           </td>
         </tr>

@@ -79,7 +79,7 @@ export default function EventRegist() {
     });
 
     const setFileList = (files: File[] | ((prev: File[]) => File[])) => {
-        const currentFiles = getValues('eventBanner') || [];
+        const currentFiles = (getValues('eventBanner') as File[] | null | undefined) ?? [];
         const newFiles = typeof files === 'function' ? files(currentFiles) : files;
         setValue('eventBanner', newFiles as File[], { shouldValidate: true });
     };
