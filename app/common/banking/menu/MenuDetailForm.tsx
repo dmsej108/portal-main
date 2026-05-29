@@ -7,7 +7,7 @@ import {
   SInput,
   SRadioGroup,
   SSelect,
-} from '@zzou/design-system';
+} from '@dmsej108/design-system';
 import type { MenuNode, MenuChannel, UseYn } from './menu-data';
 import { CHANNEL_LABEL, CHANNEL_OPTIONS } from './menu-data';
 

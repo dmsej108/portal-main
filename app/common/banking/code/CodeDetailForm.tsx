@@ -1,7 +1,7 @@
 'use client';
 
 import FormTitle from '@/components/ui/FormTitle';
-import { SButton, SInput, SRadioGroup } from '@zzou/design-system';
+import { SButton, SInput, SRadioGroup } from '@dmsej108/design-system';
 import type { CommonCode } from './code-data';
 
 const useYnOptions = [

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SButton, SInput, SIcon, SDatePicker, SSelect } from '@zzou/design-system';
+import { SButton, SInput, SIcon, SDatePicker, SSelect } from '@dmsej108/design-system';
 
 interface SearchboxProps {
   children?: React.ReactNode;

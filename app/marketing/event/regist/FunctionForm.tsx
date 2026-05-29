@@ -1,4 +1,4 @@
-import { SInput, SSelect } from '@zzou/design-system';
+import { SInput, SSelect } from '@dmsej108/design-system';
 import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldErrors } from 'react-hook-form';
 
 type FunctionFormFields = {
@@ -53,7 +53,7 @@ export default function FunctionForm({ register, errors, watch, setValue }: Func
               name="buttonName"
               placeholder="버튼 명을 입력해주세요."
               size="small"
-              value={watch('buttonName')}
+              value={watch('buttonName') ?? ''}
               onChange={(e) => setValue('buttonName', e.target.value, { shouldValidate: true })}
             />
             <span className="input-guide">App에서 버튼에 표기할 버튼 명을 입력하십시오. (예: 참여하기)</span>
@@ -69,7 +69,7 @@ export default function FunctionForm({ register, errors, watch, setValue }: Func
               name="externalLink"
               placeholder="외부 링크를 입력해주세요."
               size="small"
-              value={watch('externalLink')}
+              value={watch('externalLink') ?? ''}
               onChange={(e) => setValue('externalLink', e.target.value, { shouldValidate: true })}
             />
           </td>

@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { rules } from '@/lib/validate';
 import { useRouter } from 'next/navigation';
-import { SButton } from '@zzou/design-system';
+import { SButton } from '@dmsej108/design-system';
 
 import FormTitle from '@/components/ui/FormTitle';
 import DefaultForm from './DefaultForm';

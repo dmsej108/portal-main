@@ -13,7 +13,14 @@ export default function Header() {
   return (
     <div className="header_top">
       <div className="logo" onClick={() => router.push("/marketing/event")} style={{ cursor: "pointer" }}>
-        <Image src={`${BASE_PATH}/image/common/KB_s_kr3.jpg`} alt="logo" width={120} height={40} style={{ height: "40px", width: "auto" }} />
+        <Image
+          src={`${BASE_PATH}/image/common/KB_s_kr3.jpg`}
+          alt="logo"
+          width={800}
+          height={217}
+          style={{ height: '40px', width: 'auto' }}
+          priority
+        />
       </div>
       <div className="utils">
         <nav className="menu">

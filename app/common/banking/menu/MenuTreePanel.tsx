@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { SButton } from '@zzou/design-system';
+import { SButton } from '@dmsej108/design-system';
 import type { MenuNode } from './menu-data';
 
 interface MenuTreePanelProps {

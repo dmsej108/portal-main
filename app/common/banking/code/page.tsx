@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import type { ColDef, GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { SButton, SIcon, SInput, SSelect } from '@zzou/design-system';
+import { SButton, SIcon, SInput, SSelect } from '@dmsej108/design-system';
 import CodeGroupPanel from './CodeGroupPanel';
 import CodeDetailForm from './CodeDetailForm';
 import {

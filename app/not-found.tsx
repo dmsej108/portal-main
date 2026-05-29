@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { SButton } from '@zzou/design-system';
+import { SButton } from '@dmsej108/design-system';
 
 export default function NotFound() {
   return (

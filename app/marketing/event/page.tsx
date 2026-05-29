@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import type { ColDef, GridReadyEvent } from 'ag-grid-community';
+import type { ColDef, GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import Searchbox from '@/components/ui/Searchbox';
 import { useRouter } from 'next/navigation';
-import { SButton, SSelect, SPagination } from '@zzou/design-system';
+import { SButton, SSelect, SPagination } from '@dmsej108/design-system';
+import { MOCK_EVENT_LIST } from './event-data';
 
 const AgGridReact = dynamic(
   () => import('@/lib/config/ag-grid').then((m) => ({ default: m.AgGridReact })),
@@ -19,11 +20,17 @@ export default function Event() {
     params.api.sizeColumnsToFit();
   }, []);
 
-  const [rowData] = useState([
-    { eventId: "112", eventName: "이벤트 목록 1", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "게시", eventType: "일반", eventTarget: "모든 회원", benefitType: "즉시 지급" },
-    { eventId: "113", eventName: "이벤트 2", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "게시", eventType: "퀴즈", eventTarget: "뱅킹 회원", benefitType: "당첨후 지급" },
-    { eventId: "114", eventName: "이벤트 3", eventStartDate: "2026-01-01", eventEndDate: "2026-01-01", eventStatus: "미게시", eventType: "룰렛", eventTarget: "증권 회원", benefitType: "혜택 없음" },
-  ]);
+  const onRowClicked = useCallback(
+    (event: RowClickedEvent) => {
+      const eventId = event.data?.eventId;
+      if (eventId) {
+        router.push(`/marketing/event/detail/${eventId}`);
+      }
+    },
+    [router],
+  );
+
+  const rowData = useMemo(() => MOCK_EVENT_LIST, []);
 
   const [colDefs] = useState<ColDef[]>([
     { field: "eventId", headerName: "이벤트ID", width: 100, cellClass: "centered" },
@@ -87,6 +94,8 @@ export default function Event() {
           columnDefs={colDefs}
           domLayout="autoHeight"
           onGridReady={onGridReady}
+          onRowClicked={onRowClicked}
+          rowStyle={{ cursor: 'pointer' }}
         />
         {/* <Pagination itemCount={itemCount} cntPerPage={cntPerPage} currentPage={currentPage} onChangedPage={onChangedPage} /> */}
         <div className="pagination">

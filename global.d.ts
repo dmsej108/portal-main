@@ -3,6 +3,6 @@ declare module '*.css' {
   export default content;
 }
 
-declare module '@zzou/design-system/styles' {}
-declare module '@zzou/design-system/dist/index.css' {}
-declare module '@zzou/design-system/legacy-styles' {}
+declare module '@dmsej108/design-system/styles' {}
+declare module '@dmsej108/design-system/dist/index.css' {}
+declare module '@dmsej108/design-system/legacy-styles' {}

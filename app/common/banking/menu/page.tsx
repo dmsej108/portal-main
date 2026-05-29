@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { SButton, SIcon, SInput, SSelect } from '@zzou/design-system';
+import { SButton, SIcon, SInput, SSelect } from '@dmsej108/design-system';
 import MenuTreePanel from './MenuTreePanel';
 import MenuDetailForm from './MenuDetailForm';
 import {

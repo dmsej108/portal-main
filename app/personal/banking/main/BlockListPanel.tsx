@@ -1,6 +1,6 @@
 'use client';
 
-import { SButton } from '@zzou/design-system';
+import { SButton } from '@dmsej108/design-system';
 import type { MainBlock } from './main-data';
 import { BLOCK_TYPE_LABEL, sortBlocks } from './main-data';
 

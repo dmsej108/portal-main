@@ -43,7 +43,7 @@
   - 객체 스키마 기반 유효성 검사 라이브러리입니다.
   - 폼 입력값의 구조와 타입을 검증하는 규칙을 정의할 때 사용합니다。
 
-- `@zzou/design-system` `^0.1.0`
+- `@dmsej108/design-system` `^0.1.0`
   - 사내 디자인 시스템 패키지입니다.
   - `Button`, `Input`, `Card`, `DatePicker` 등 공통 UI 컴포넌트를 제공합니다.
   - 테스트 페이지: `/design-test`

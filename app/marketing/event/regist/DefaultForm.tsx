@@ -1,5 +1,5 @@
 // import FileUpload from '@/components/ui/FileUpload';
-import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@zzou/design-system';
+import { SButton, SChip, SCheckbox, SInput, SFileInput, SRadioGroup, SSelect, STextarea, SDatePicker } from '@dmsej108/design-system';
 import { useState } from 'react';
 import type { FieldErrors, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
@@ -238,7 +238,7 @@ export default function DefaultForm({ register, errors, watch, setValue, setFile
               name="eventBannerDescription"
               placeholder="이벤트 배너 설명을 입력해주세요."
               size="small"
-              value={watch('eventBannerDescription')}
+              value={watch('eventBannerDescription') ?? ''}
               onChange={(e) => setValue('eventBannerDescription', e.target.value, { shouldValidate: true })}
             />
           </td>

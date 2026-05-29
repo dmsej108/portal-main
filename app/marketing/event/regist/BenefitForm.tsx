@@ -1,4 +1,4 @@
-import { SButton, SInput, SRadioGroup } from '@zzou/design-system';
+import { SButton, SInput, SRadioGroup } from '@dmsej108/design-system';
 import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldErrors } from 'react-hook-form';
 
 type BenefitFormFields = {
@@ -41,7 +41,7 @@ export default function BenefitForm({ errors, watch, setValue }: BenefitFormProp
               size="small"
               direction="horizontal"
               options={fcfsUseOptions}
-              value={watch('fcfsUse')}
+              value={watch('fcfsUse') ?? '1'}
               onChange={(value) => setValue('fcfsUse', value, { shouldValidate: true })}
             />
           </td>
@@ -74,7 +74,7 @@ export default function BenefitForm({ errors, watch, setValue }: BenefitFormProp
                 size="small"
                 direction="horizontal"
                 options={benefitListOptions}
-                value={watch('benefitList')}
+                value={watch('benefitList') ?? '1'}
                 onChange={(value) => setValue('benefitList', value, { shouldValidate: true })}
               />
               {errors.benefitList && (

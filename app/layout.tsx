@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import '@zzou/design-system/dist/index.css';
-import "@zzou/design-system/styles";
+import '@dmsej108/design-system/dist/index.css';
+import "@dmsej108/design-system/styles";
 import "@/styles/admin.css";
 import Container from "@/components/layout/Container";
 
@@ -31,10 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        suppressHydrationWarning
+      >
         <Container>{children}</Container>
       </body>
     </html>
-  );  
+  );
 }

@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import type { ColDef, GridReadyEvent } from 'ag-grid-community';
-import { SButton, SIcon, SSelect } from '@zzou/design-system';
+import { SButton, SIcon, SSelect } from '@dmsej108/design-system';
 import BlockListPanel from './BlockListPanel';
 import BlockDetailForm from './BlockDetailForm';
 import MainPreview from './MainPreview';

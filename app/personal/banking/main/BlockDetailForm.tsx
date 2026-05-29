@@ -1,7 +1,7 @@
 'use client';
 
 import FormTitle from '@/components/ui/FormTitle';
-import { SButton, SInput, SRadioGroup, SSelect, STextarea } from '@zzou/design-system';
+import { SButton, SInput, SRadioGroup, SSelect, STextarea } from '@dmsej108/design-system';
 import type { MainBlock, BlockType } from './main-data';
 import { BLOCK_TYPE_LABEL } from './main-data';
 
