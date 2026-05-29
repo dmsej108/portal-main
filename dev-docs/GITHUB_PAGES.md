@@ -18,6 +18,18 @@
    - (Deploy from a branch / `docs` 폴더 + Jekyll **사용하지 마세요**)
 3. 저장
 
+## 배포 URL
+
+GitHub Pages 프로젝트 사이트는 `https://<user>.github.io/<repository-name>/` 입니다.  
+빌드 시 `basePath` / `assetPrefix`는 **저장소 이름**과 같아야 합니다 (워크플로에서 `NEXT_PUBLIC_BASE_PATH=/<repo>` 설정).
+
+| 저장소 | 접속 URL | basePath |
+|--------|----------|----------|
+| `dmsej108/portal-main` | https://dmsej108.github.io/portal-main/ | `/portal-main` |
+| `zzous/potal-admin` | https://zzous.github.io/potal-admin/ | `/potal-admin` |
+
+JS/CSS 404 (`/_next/static/...`)가 나오면 basePath와 실제 Pages URL의 경로가 다른 경우가 많습니다.
+
 ## 배포 워크플로
 
 - 브랜치: `master` push
