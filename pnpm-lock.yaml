@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dmsej108/design-system':
-        specifier: ^2.2.0
-        version: 2.2.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 2.3.0
+        version: 2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.71.1(react@19.2.3))
@@ -127,8 +127,8 @@ packages:
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
-  '@dmsej108/design-system@2.2.0':
-    resolution: {integrity: sha512-wE8yNeK3JsqvlnXkmyh/kjy+PpaPjCVYyyKX3oRcuweDa5LkNlKtOahn2bH1FYxDPm0TC51BKCuTZgbTvqP9dA==}
+  '@dmsej108/design-system@2.3.0':
+    resolution: {integrity: sha512-s35HfifRSn+loHM+ajpmPMb1IKBK2aRI7GOjiZN4kt068FBWeSEMOPaew8Jmsnf6JIABn6JXXmY+xfsg7yI5zQ==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -675,11 +675,23 @@ packages:
   ag-charts-types@13.0.0:
     resolution: {integrity: sha512-mqOmKS0q4s2tt/C+CBG2Z+HWrSKYvRUCAlQzcKXKfARE3v/KdnBuxfjafa2c8ivElTTywdVdOe0q52Cow2Oggw==}
 
+  ag-charts-types@13.3.0:
+    resolution: {integrity: sha512-UMoAn908LC4ZIJSNfUckSBEFa79Mi1vFRA8qIRx+NusEuuFgXDioCZx4MxM7O3rDXlxTWH9DvQmcDjh7vyd89w==}
+
   ag-grid-community@35.0.0:
     resolution: {integrity: sha512-Cz3MA98zZygPwvCi8OKIhP0nea+YXdx8r5MwIXqVqnQwb/BEL05nGxwovIpelL6spv3jNlHQrTVgt4lw9J+nyg==}
 
+  ag-grid-community@35.3.0:
+    resolution: {integrity: sha512-c9WQWB88J965IjBC/GPUX30aAZix10o6oYT86DWipcxgLZTIQlLSilJJEr1bno/245rPEAIMjhoU1gp9VIfURg==}
+
   ag-grid-react@35.0.0:
     resolution: {integrity: sha512-ZmAjDnLONYja3IazKnMsqWZ8ZsJNTOTVQQX2tXNEkDHTMlVqIkDrcVU2f/o8awJhLCZhOMh7bE1YmYG/yHZLOg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  ag-grid-react@35.3.0:
+    resolution: {integrity: sha512-3c6YEFGQGNZxEi1PdK0b+WhKkKRJ7KxuYzsG4UmISyax5/J7N93f8B1TZK1pq+AgzPhdk/++vjZe3KhFdF3tog==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1951,8 +1963,10 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@dmsej108/design-system@2.2.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@dmsej108/design-system@2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
+      ag-grid-community: 35.3.0
+      ag-grid-react: 35.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-datepicker: 9.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom: 19.2.3(react@19.2.3)
@@ -2418,13 +2432,26 @@ snapshots:
 
   ag-charts-types@13.0.0: {}
 
+  ag-charts-types@13.3.0: {}
+
   ag-grid-community@35.0.0:
     dependencies:
       ag-charts-types: 13.0.0
 
+  ag-grid-community@35.3.0:
+    dependencies:
+      ag-charts-types: 13.3.0
+
   ag-grid-react@35.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       ag-grid-community: 35.0.0
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+
+  ag-grid-react@35.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      ag-grid-community: 35.3.0
       prop-types: 15.8.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
