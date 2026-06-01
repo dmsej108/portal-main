@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dmsej108/design-system':
-        specifier: 2.3.0
-        version: 2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 2.3.1
+        version: 2.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.71.1(react@19.2.3))
@@ -127,8 +127,8 @@ packages:
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
-  '@dmsej108/design-system@2.3.0':
-    resolution: {integrity: sha512-s35HfifRSn+loHM+ajpmPMb1IKBK2aRI7GOjiZN4kt068FBWeSEMOPaew8Jmsnf6JIABn6JXXmY+xfsg7yI5zQ==}
+  '@dmsej108/design-system@2.3.1':
+    resolution: {integrity: sha512-stVPnzAjDEVLxXfJpK0I1BIkRxvSzUJZrZ2SiYJIBLwyfVglKGmYA5zgbRNrANpy7fZhaW5v9BqEEp9x8AgDHw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -1963,7 +1963,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@dmsej108/design-system@2.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@dmsej108/design-system@2.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       ag-grid-community: 35.3.0
       ag-grid-react: 35.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
