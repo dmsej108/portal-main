@@ -25,7 +25,7 @@ GitHub Pages 프로젝트 사이트는 `https://<user>.github.io/<repository-nam
 
 | 저장소 | 접속 URL | basePath |
 |--------|----------|----------|
-| `dmsej108/portal-main` | https://dmsej108.github.io/portal-main/ | `/portal-main` |
+| `dmsej108/portal-admin` | https://dmsej108.github.io/portal-admin/ | `/portal-admin` |
 | `zzous/potal-admin` | https://zzous.github.io/potal-admin/ | `/potal-admin` |
 
 JS/CSS 404 (`/_next/static/...`)가 나오면 basePath와 실제 Pages URL의 경로가 다른 경우가 많습니다.
